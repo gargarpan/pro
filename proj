@@ -1,0 +1,77 @@
+from tkinter import *
+list=[]
+
+
+root = Tk()
+
+root.title('Library Management System')
+
+def get_data():
+    c=0
+    list[c]=e1.get()
+    show_all()
+
+
+
+
+def show_all():
+    for item in list:
+        lstbox.insert("end",item)
+
+
+
+
+
+l1 = Label(root, text='add todo list')
+l1.grid(row=0, column=0)
+
+
+
+
+
+# define Entries
+title_text=StringVar()
+e1=Entry(root,textvariable=title_text)
+e1.grid(row=0, column=1)
+
+
+
+# define Listbox
+lstbox = Listbox(root, height=8, width=35)
+lstbox.grid(row=2, column=1, rowspan=6, columnspan=6)
+lstbox.bind('<Double-Button-1>')
+
+
+# add scrollbar to listbox
+sb = Scrollbar(root)
+sb.grid(row=3, column=7, rowspan=3)
+
+lstbox.configure(yscrollcommand=sb.set)
+sb.configure(command=lstbox.yview)
+
+# define Buttons
+b1 = Button(root, text='add', width=12,command=show_all)
+b1.grid(row=1, column=0)
+b1 = Button(root, text='clear all', width=12)
+b1.grid(row=2, column=0)
+
+b1 = Button(root, text='remove', width=12)
+b1.grid(row=3, column=0)
+
+b1 = Button(root, text='assend sort', width=12)
+b1.grid(row=4, column=0)
+
+b1 = Button(root, text='desecent sort', width=12)
+b1.grid(row=5, column=0)
+
+b1 = Button(root, text='choose random', width=12)
+b1.grid(row=6, column=0)
+b1 = Button(root, text='number of task', width=12)
+b1.grid(row=7, column=0)
+b1 = Button(root, text='Close', width=12, command=root.destroy)
+b1.grid(row=8, column=0)
+
+
+root.resizable(False, False)
+
+root.mainloop()
